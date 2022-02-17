@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "baseUrl": ".",
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "typeRoots": ["./node_modules/@types"],
+    "target": "es5",
+    "paths": {
+      "db": ["./db/*"],
+      "app": ["./app/*"],
+      "@libs/*": ["./libs/*"]
+    }
+  },
+  "include": ["./app", "./db", "./libs"],
+  "exclude": ["./node_modules"]
+}
