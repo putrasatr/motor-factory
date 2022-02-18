@@ -15,21 +15,13 @@ import Paginator from "@inquirer/core/lib/Paginator";
 import chalk from "chalk";
 import figures from "figures";
 import ansi from "ansi-escape-sequences";
-interface ChoicesProps {
-  value: string;
-  description?: string;
-  name: string;
-  disabled?: boolean;
-}
-interface SelectConfigProps {
-  choices: ChoicesProps[];
-  pageSize?: number;
-  message?: string;
-}
+import { SelectConfigProps } from "app/index";
 
 const cursorHide = ansi.cursorHide || "";
-
-export default createPrompt((config: SelectConfigProps, done?: Function) => {
+interface SelectProps<A = SelectConfigProps, B = Function> {
+  (config: A, done?: B): Promise<string>;
+}
+const select: SelectProps = createPrompt((config, done) => {
   const [status, setStatus] = useState("pending");
   const [cursorPosition, setCursorPos] = useState<number>(0);
   const { choices, pageSize = 7 } = config;
@@ -68,7 +60,7 @@ export default createPrompt((config: SelectConfigProps, done?: Function) => {
 
   if (status === "done") {
     const choice = choices[cursorPosition];
-    return `${prefix} ${message} ${chalk.cyan(choice.name || choice.value)}`;
+    return `${chalk.cyan(choice.name || choice.value)}`;
   }
 
   const allChoices = choices
@@ -96,3 +88,5 @@ export default createPrompt((config: SelectConfigProps, done?: Function) => {
     choice && choice.description ? `\n${choice.description}` : ``;
   return `${prefix} ${message}\n${windowedChoices}${choiceDescription}${cursorHide}`;
 });
+
+export default select;
