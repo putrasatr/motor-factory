@@ -4,6 +4,7 @@
     "sourceMap": true,
     "baseUrl": ".",
     "noEmit": true,
+    "allowJs": true,
     "esModuleInterop": true,
     "module": "commonjs",
     "moduleResolution": "Node",

@@ -14,17 +14,27 @@ import {
 import Paginator from "@inquirer/core/lib/Paginator";
 import chalk from "chalk";
 import figures from "figures";
-import ansi from "ansi-escapes";
+import ansi from "ansi-escape-sequences";
+interface ChoicesProps {
+  value: string;
+  description?: string;
+  name: string;
+  disabled?: boolean;
+}
+interface SelectConfigProps {
+  choices: ChoicesProps[];
+  pageSize?: number;
+  message?: string;
+}
 
-const cursorHide = ansi.cursorHide;
+const cursorHide = ansi.cursorHide || "";
 
-const select = createPrompt((config, done) => {
+export default createPrompt((config: SelectConfigProps, done?: Function) => {
   const [status, setStatus] = useState("pending");
-  const [cursorPosition, setCursorPos] = useState(0);
+  const [cursorPosition, setCursorPos] = useState<number>(0);
   const { choices, pageSize = 7 } = config;
   const paginator = useRef(new Paginator()).current;
   const prefix = usePrefix();
-
   useKeypress((key) => {
     if (isEnterKey(key)) {
       setStatus("done");
@@ -84,8 +94,5 @@ const select = createPrompt((config, done) => {
   const choice = choices[cursorPosition];
   const choiceDescription =
     choice && choice.description ? `\n${choice.description}` : ``;
-
   return `${prefix} ${message}\n${windowedChoices}${choiceDescription}${cursorHide}`;
 });
-
-export default select;
