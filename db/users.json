@@ -1,0 +1,19 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "username": "SUPERADMIN",
+      "role": "SUPERADMIN",
+      "email": "admin@gmail.com",
+      "password": "password"
+    },
+    {
+      "id": 2,
+      "username": "haurbun",
+      "role": "user",
+      "email": "burhin@gmail.com",
+      "password": "password"
+    }
+  ],
+  "last_id": 2
+}
