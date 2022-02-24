@@ -1,10 +1,10 @@
 import { WFile } from "app/index";
 import fs from "fs";
 
-const writeFile: WFile = (pathToDb) => {
+const writeFile: WFile = (pathToDb, data) => {
   fs.writeFile(
     pathToDb,
-    JSON.stringify([], null, 3),
+    JSON.stringify(data, null, 3),
     { encoding: "utf-8" },
     () => {}
   );

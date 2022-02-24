@@ -1,12 +1,7 @@
 import select from "app/components/select";
+import Routers from "./routers";
 
-select({
-  message: "Pilih",
-  choices: [
-    { name: "Its", value: "TT" },
-    { name: "The Repeat", value: "Makes" },
-  ],
-}).then((res) => console.log(res));
+Routers();
 
 export * from "app/types";
 export * from "./pages/index";

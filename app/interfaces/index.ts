@@ -2,7 +2,7 @@ export interface HandleMadeDb {
   (dbName: string): boolean;
 }
 export interface WriteFile {
-  (pathToDb: string): boolean;
+  (pathToDb: string, data?: object | object[] | string[]): boolean;
 }
 export interface ChoicesProps {
   value: string;
