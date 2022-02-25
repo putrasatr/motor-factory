@@ -52,8 +52,7 @@ let code = (table_name: string): string => `({
       
       const synclize = new Synclize<UserProps>(${table_name});
       const data = synclize.Select().WhereId(1)
-      console.log("YES",data)
-      return "success"
+      return data
     }
   })`;
   
