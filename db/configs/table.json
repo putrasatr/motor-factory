@@ -1,0 +1,17 @@
+{
+  "users": {
+    "columns": {
+      "id": "string",
+      "username": "string",
+      "email": "string",
+      "role": "string",
+      "password": "string"
+    }
+  },
+  "accessories": {
+    "columns": {
+      "id": "string",
+      "name": "string"
+    }
+  }
+}
