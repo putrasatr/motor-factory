@@ -18,6 +18,6 @@
       "@libs/*": ["./libs/*"]
     }
   },
-  "include": ["./app", "./db", "./libs"],
+  "include": ["./app", "./db", "./libs", "./testing"],
   "exclude": ["./node_modules"]
 }
