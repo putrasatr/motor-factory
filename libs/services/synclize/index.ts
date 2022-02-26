@@ -51,15 +51,13 @@ const synclize: Synclize = (table_name, key, value) => {
     }
     ${interfaces + "}"}
         const synclize = new Synclize<UserProps>("${table_name}");
-        const data = ${resultString}
+        const {data} = ${resultString}
         return data
       }
     })`;
 
   let result = ts.transpile(code);
   let runnalbe: any = eval(result);
-  console.log(runnalbe.fetch());
   return runnalbe.fetch();
 };
-synclize("accessories", 1);
 export default synclize;
