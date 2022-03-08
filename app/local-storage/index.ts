@@ -24,5 +24,5 @@ export class LocalStorage {
   }
 }
 const localStorage = new LocalStorage();
-localStorage.remove();
+
 export default localStorage;
